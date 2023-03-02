@@ -53,5 +53,26 @@ public class controller {
          .header("Message", "The array is")
          .body(array.toString());
     }
+
+        
+    @GetMapping (path = "/name", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> getContactArray2 (){
+        JsonObject payload = Json.createObjectBuilder()
+        .add("name", "John")
+        .add("age", 30)
+        .add("married", false)
+        .build();
+
+        //to do jsonarray, need to have a json object first, like above
+        JsonArray array = Json.createArrayBuilder()
+        .add(payload)
+ 		.build(); 
+
+         System.out.printf("+++=array: %s\n", array.toString());
+
+         return ResponseEntity.status(200)
+         .header("Message", "The array is")
+         .body(array.toString());
+    }
     
 }
